@@ -25,7 +25,7 @@ TOKEN="..."
 - **WARNING!** If you are forking this OR making your own repository public, make sure to make a .gitignore file with its contents containing `hidden.py` only if it does not exist already within your clone.
 
 ## Roadmap
-- [ ] Move all projects into singular extensions for easier managenment
+- [x] Move all projects into singular extensions for easier managenment
 - [ ] Complete the 'TDSMP' information extension
 - [ ] Get more contributors to allow easier development
 - [ ] Find a host OR self-host the bot for prod
