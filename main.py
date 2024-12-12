@@ -25,4 +25,11 @@ async def ping(
 ) -> None:
     await ctx.respond(f"Hey {user.mention}!")
 
+@client.include
+@arc.slash_command("modpack-ver", "List the current modpack version.")
+async def info(
+    ctx: arc.GatewayContext
+) -> None:
+    await ctx.respond(f"**TDSMP**\nThe current modpack version is: **v1.1.0**. (last updated: <t:1734003240:D>)")
+
 bot.run()
