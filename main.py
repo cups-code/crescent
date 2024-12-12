@@ -1,6 +1,7 @@
 # List of Imports
 import hikari
 import arc
+# "import hidden" is ignored in .gitignore for security purposes
 import hidden
 
 # Initialisation
@@ -25,6 +26,8 @@ async def ping(
 ) -> None:
     await ctx.respond(f"Hey {user.mention}!")
 
+
+# This is queued for moving to an extension instead of being as a base command
 @client.include
 @arc.slash_command("modpack-ver", "List the current modpack version.")
 async def info(
