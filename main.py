@@ -21,7 +21,7 @@ client = arc.GatewayClient(bot)
 # Outputs a custom message for when the bot starts, allowing for easy readability
 @bot.listen(hikari.StartedEvent)
 async def bot_started(event):
-    print('[⭐️] [LOG] /bin/utils is now active.')
+    print('[⭐️] [LOG] /bin/crescent is now active.')
 
 # -- COMMANDS -- #
 # Test command pulled from the `arc` example repo (thank you!)
@@ -50,12 +50,12 @@ async def ping(
 @arc.slash_subcommand("shard-count", "Check the bot's shard count.")
 # Checks if the command has the right author
 # [#] @cups9 : currently attempting to somehow declare the `author_check` function so it can be used in any command, need help!
-async def author_check(ctx: arc.Context[Any]) -> None:
-    if ctx.author.id != hidden.AUTHOR_ID: # the author is hidden for privacy purposes
-        raise Exception("An unauthorised author attempted to execute this command.")
 async def shard_count(
     ctx: arc.GatewayContext
 ) -> None:
+    async def author_check(ctx: arc.Context[Any]) -> None:
+        if ctx.author.id != hidden.AUTHOR_ID: # the author is hidden for privacy purposes
+            raise Exception("An unauthorised author attempted to execute this command.")
     await ctx.respond(f"This bot currently has: **{bot.shard_count}** shards.", flags=hikari.MessageFlag.EPHEMERAL)
 
 # -- EXTENSIONS -- #
