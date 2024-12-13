@@ -1,4 +1,4 @@
-# /bin/utils
+# /bin/crescent
 A Discord bot developed by cups9 in affiliation with Citrine Studios used for basic utilities, such as outputting information from certain projects.
 
 ## Development
@@ -21,6 +21,18 @@ git clone https://github.com/cups-code/utils-bot
 ```py
 # hidden.py
 TOKEN="..."
+```
+- The dependencies are already installed in the `venv`. If you wish to install the dependencies system-wide, use the following command.
+```
+pip install hikari hikari-arc
+```
+or
+```
+pip3 install hikari hikari-arc
+```
+or
+```
+python3 -m pip install hikari hikari-arc
 ```
 - **WARNING!** If you are forking this OR making your own repository public, make sure to make a .gitignore file with its contents containing `hidden.py` only if it does not exist already within your clone.
 
