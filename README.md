@@ -16,7 +16,7 @@ If you want to help support the development of this project, please consider wri
 ### Local Development
 - To run this bot locally, make sure to clone this repository in the folder you want by typing this command.
 ```
-git clone https://github.com/cups-code/utils-bot
+git clone https://github.com/cups-code/crescent
 ```
 - Then, you will need to create a file called `hidden.py` which will store your token in a variable called `TOKEN`.
 - You will need to use your own token by making an application on [discord.dev](https://discord.dev/) and going to the 'Bot' section. Reset the bot token to receive it.
