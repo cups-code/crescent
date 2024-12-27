@@ -61,7 +61,7 @@ async def shard_count(
 # -- EXTENSIONS -- #
 # Loads the extensions required for this project, which can be unloaded later if change is desired
 # Imports the module from a different script which in this case, are scripts from the "extensions" folder
-client.load_extension("extensions.tdsmp")
+client.load_extension("extensions.anthurium")
 
 # -- LAUNCH -- #
 # Launches and starts the bot
