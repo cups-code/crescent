@@ -10,7 +10,7 @@ import hidden
 # Defines the `plugin` variable for other commands
 plugin = arc.GatewayPlugin("anthurium")
 # ** anthurium SLASH_GROUP ** #
-anthurium = plugin.include_slash_group("smp", "Commands from the active SMP from Citrine Studios")
+anthurium = plugin.include_slash_group("anthurium", "Commands from the Anthurium SMP from Citrine Studios")
 faq = anthurium.include_subgroup("faq", "Learn about frequently asked or thought-about questions")
 
 # Uses @plugin.include instead of @client.include

@@ -4,6 +4,10 @@
 * all code here is modifiable so long as you adhere to the GPL-3 license (you must fork this repo to modify the code)
 * if this project expands, it will be owned by Citrine Studios and not @cups9
 """
+
+
+
+
 # -- IMPORTS -- #
 # `hikari` and `arc` are explained in the README.md
 import hikari
@@ -12,6 +16,9 @@ import arc
 import hidden
 # required for certain functions
 from typing import Any
+import json
+import os
+import asyncio
 
 # -- QUICKSTART -- #
 # `bot` and `client` define key variables used within the script
@@ -21,21 +28,23 @@ client = arc.GatewayClient(bot)
 # Outputs a custom message for when the bot starts, allowing for easy readability
 @bot.listen(hikari.StartedEvent)
 async def bot_started(event):
-    print('[⭐️] [LOG] /bin/crescent is now active.')
+    print('[***] [LOG] /bin/crescent is now active.')
+
+
 
 # -- COMMANDS -- #
+
+
 # Test command pulled from the `arc` example repo (thank you!)
 @client.include
 @arc.slash_command("hi", "Say hi!")
-async def test(
-    ctx: arc.GatewayContext,
-    user: arc.Option[hikari.User, arc.UserParams("The user to say hi to.")]
-) -> None:
+async def test(ctx: arc.GatewayContext, user: arc.Option[hikari.User, arc.UserParams("The user to say hi to.")]) -> None:
     await ctx.respond(f"Hey {user.mention}!")
+
 
 # -- DEBUG -- #
 # Defines the slash command group for the next few commands
-status = client.include_slash_group("status", "Check the status of the bot")
+status = client.include_slash_group("debug", "Check the status of the bot")
 
 # Checks the ping of the bot
 @status.include
@@ -44,6 +53,14 @@ async def ping(
     ctx: arc.GatewayContext
 ) -> None:
     await ctx.respond(f"Pong! {bot.heartbeat_latency * 1_000:.0f}ms")
+
+@status.include
+@arc.slash_subcommand("input", "Test command for handling user input.")
+async def input(
+    ctx: arc.GatewayContext,
+    string: arc.Option[str, arc.StrParams("Input to input")]
+) -> None:
+    await ctx.respond(f"Your input was: {string}")
 
 # Checks the shard (instances/servers) count of the bot
 @status.include
@@ -62,6 +79,8 @@ async def shard_count(
 # Loads the extensions required for this project, which can be unloaded later if change is desired
 # Imports the module from a different script which in this case, are scripts from the "extensions" folder
 client.load_extension("extensions.anthurium")
+client.load_extension("extensions.polls")
+client.load_extension("extensions.nexus")
 
 # -- LAUNCH -- #
 # Launches and starts the bot
